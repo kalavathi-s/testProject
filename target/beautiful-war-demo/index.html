@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beautiful Maven WAR Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <main class="hero">
+        <section class="card">
+            <span class="badge">Maven + WAR</span>
+            <h1>Build a beautiful Java web app</h1>
+            <p>
+                This starter project packages a servlet-based Java application into a
+                deployable .war archive and serves a polished frontend.
+            </p>
+
+            <div class="actions">
+                <button id="loadMessage">Load dynamic message</button>
+                <a href="/beautiful-war-demo/api/message" target="_blank">Open API endpoint</a>
+            </div>
+
+            <div class="message-box" id="messageBox">
+                Click the button to fetch a live greeting from the servlet.
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
