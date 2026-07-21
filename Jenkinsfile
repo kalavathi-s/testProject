@@ -1,33 +1,23 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven'
-        jdk 'JDK11'
-    }
-
-    options {
-        timestamps()
-    }
-
     stages {
-        stage('Checkout') {
+        stage('clone') {
             steps {
                 git url: 'https://github.com/kalavathi-s/testProject.git', branch: 'main'
             }
         }
 
-        stage('Build and Test') {
+        stage('build') {
             steps {
-                sh 'mvn -B clean verify'
+                sh 'echo "JAVA_HOME=$JAVA_HOME" && java -version && mvn -version'
+                sh 'mvn clean package'
             }
         }
-    }
-
-    post {
-        always {
-            archiveArtifacts artifacts: 'target/*.war', allowEmptyArchive: true
-            junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+        stage('deploy') {
+            steps {
+                sh 'sudo cp /var/lib/jenkins/workspace/pipeline/target/beautiful-war-demo.war /home/ec2-user/apache-tomcat-10.1.57/webapps'
+            }
         }
     }
 }
