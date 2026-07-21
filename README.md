@@ -3,4 +3,4 @@ Learning Practice
 
 Added Readme file
 Test commit changes 
-check CI
+check CI deployment
